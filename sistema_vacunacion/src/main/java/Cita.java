@@ -30,4 +30,15 @@ public class Cita {
         return centro;
     }
 
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public LocalDateTime getFecha_hora() {
+        return fecha_hora;
+    }
+
+    public Vacuna getVacuna() {
+        return vacuna;
+    }
 }
