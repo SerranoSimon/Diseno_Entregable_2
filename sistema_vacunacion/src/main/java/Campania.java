@@ -21,4 +21,8 @@ public class Campania {
         this.pobObj = pobObj;
         this.stockVacunas = stockVacunas;
     }
+
+    public Integer getIdCampania() {
+        return idCampania;
+    }
 }

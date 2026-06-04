@@ -6,15 +6,15 @@ public class Cita {
     private Paciente paciente;
     private FuncSalud funcionario;
     private CentroVacunacion centro;
-    private Campania campania;
+    private Vacuna vacuna;
 
     public Cita(Paciente paciente, FuncSalud funcionario, LocalDateTime fecha_hora,
-                CentroVacunacion centro, Campania campania) {
+                CentroVacunacion centro, Vacuna vacuna) {
         this.paciente = paciente;
         this.funcionario = funcionario;
         this.fecha_hora = fecha_hora;
         this.centro = centro;
-        this.campania = campania;
+        this.vacuna= vacuna;
         this.estado = EstadoCita.VIGENTE;
     }
 
@@ -30,7 +30,4 @@ public class Cita {
         return centro;
     }
 
-    public Campania getCampania() {
-        return campania;
-    }
 }

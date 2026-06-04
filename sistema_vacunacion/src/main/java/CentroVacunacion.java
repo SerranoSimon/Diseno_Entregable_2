@@ -47,6 +47,9 @@ public class CentroVacunacion {
                 }
             }
             return null;
-    };
+    }
 
+    public Integer getId_centro() {
+        return id_centro;
+    }
 }

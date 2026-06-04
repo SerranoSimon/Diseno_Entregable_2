@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -64,13 +65,21 @@ class DisponibilidadHorarioCentro {
     private CentroVacunacion centroConFuncionario(FuncSalud fs) {
         ArrayList<FuncSalud> funcionarios = new ArrayList<>();
         funcionarios.add(fs);
-        return new CentroVacunacion(1, new ArrayList<>(), funcionarios);
+        return new CentroVacunacion(1, null, null,null,funcionarios,null);
     }
 
     private FuncSalud funcionarioLunes() {
         ArrayList<HorarioFs> horariosFs = new ArrayList<>();
         horariosFs.add(new HorarioFs(DayOfWeek.MONDAY, LocalTime.of(9, 0), LocalTime.of(18, 0)));
-        return new FuncSalud(horariosFs);
+        return new FuncSalud(
+                "22.222.222-2",
+                "Ana",
+                "Gómez",
+                912345678,
+                "ana.gomez@cesfam.cl",
+                LocalDate.of(1985, 5, 20),
+                horariosFs
+        );
     }
 
     @Test

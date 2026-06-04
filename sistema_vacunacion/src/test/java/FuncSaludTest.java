@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -12,7 +13,17 @@ class FuncSaludTest {
     private FuncSalud funcConHorarioLunes() {
         ArrayList<HorarioFs> horarios = new ArrayList<>();
         horarios.add(new HorarioFs(DayOfWeek.MONDAY, LocalTime.of(9, 0), LocalTime.of(13, 0)));
-        return new FuncSalud(horarios);
+
+        // CORRECCIÓN: Añadimos los datos personales requeridos por la clase Usuario
+        return new FuncSalud(
+                "22.222.222-2",
+                "Ana",
+                "Gómez",
+                912345678,
+                "ana.gomez@cesfam.cl",
+                LocalDate.of(1985, 5, 20),
+                horarios
+        );
     }
 
     @Test
