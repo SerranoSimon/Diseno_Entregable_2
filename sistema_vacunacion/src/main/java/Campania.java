@@ -9,4 +9,7 @@ public class Campania {
     private EstadoCampania estadoCampania;
     private PoblacionObjetivo pobObj;
 
+    public Integer getIdCampania() {
+        return idCampania;
+    }
 }
