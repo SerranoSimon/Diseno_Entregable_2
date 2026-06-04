@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CentroVacunacionTest {
+class DisponibilidadHorarioCentro {
 
     private CentroVacunacion centro;
 
@@ -22,7 +22,7 @@ class CentroVacunacionTest {
         // El centro abre los Miércoles de 10:00 a 14:00
         horarios.add(new HorarioCentro(DayOfWeek.WEDNESDAY, LocalTime.of(10, 0), LocalTime.of(14, 0)));
 
-        centro = new CentroVacunacion(horarios);
+        centro = new CentroVacunacion(null,null,null,null,null,horarios);
     }
 
     @Test

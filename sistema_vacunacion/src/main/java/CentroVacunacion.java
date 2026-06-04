@@ -7,11 +7,16 @@ public class CentroVacunacion {
     private Integer id_centro;
     private String nombre;
     private String tipo;
-    private ArrayList<Vacuna> vacunas;
+    private ArrayList<StockVacuna> stockVacunas;
     private ArrayList<FuncSalud> funcSalud;
     private ArrayList<HorarioCentro> horarios;
 
-    public CentroVacunacion(ArrayList<HorarioCentro> horarios) {
+    public CentroVacunacion(Integer id_centro, String nombre, String tipo, ArrayList<StockVacuna> stockVacunas, ArrayList<FuncSalud> funcSalud, ArrayList<HorarioCentro> horarios) {
+        this.id_centro = id_centro;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.stockVacunas = stockVacunas;
+        this.funcSalud = funcSalud;
         this.horarios = horarios;
     }
 
@@ -25,6 +30,15 @@ public class CentroVacunacion {
             }
         }
       return false;
+    };
+
+    public Vacuna buscarVacuna(Campania camp){
+            for(StockVacuna sv: stockVacunas){
+                if(sv.vacunaEsDeCampania(camp) && sv.verificarStock()){
+                    return sv.reservar();
+                }
+            }
+            return null;
     };
 
 }
