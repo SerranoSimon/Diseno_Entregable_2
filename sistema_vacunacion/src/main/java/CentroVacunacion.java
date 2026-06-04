@@ -12,11 +12,16 @@ public class CentroVacunacion {
         return id_centro;
     }
     private ArrayList<Vacuna> vacunas;
-    private ArrayList<FuncSalud> funcSalud;
+    private ArrayList<FuncSalud> funcSalud = new ArrayList<>();
     private ArrayList<HorarioCentro> horarios;
 
     public CentroVacunacion(ArrayList<HorarioCentro> horarios) {
         this.horarios = horarios;
+    }
+
+    public CentroVacunacion(ArrayList<HorarioCentro> horarios, ArrayList<FuncSalud> funcSalud) {
+        this.horarios = horarios;
+        this.funcSalud = funcSalud;
     }
 
     public boolean estaAbierto(LocalDateTime fechaHora){
@@ -31,4 +36,12 @@ public class CentroVacunacion {
       return false;
     };
 
+    public FuncSalud buscarFsParaCita(LocalDateTime fechaHora){
+        for(FuncSalud fs: funcSalud){
+            if(fs.disponible(fechaHora)){
+                return fs;
+            }
+        }
+        return null;
+    }
 }

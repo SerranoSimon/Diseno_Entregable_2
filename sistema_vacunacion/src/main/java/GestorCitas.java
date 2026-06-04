@@ -12,7 +12,8 @@ public class GestorCitas {
         
         Campania camp = buscarCampania(id_campania);
         CentroVacunacion c = buscarCentro(id_centro);
-        Cita cita = new Cita(paciente, null, fecha_hora, c, camp);
+        FuncSalud fs = c.buscarFsParaCita(fecha_hora);
+        Cita cita = new Cita(paciente, fs, fecha_hora, c, camp);
         gestorNotificaciones.notificarCita(cita);
 
         return cita;

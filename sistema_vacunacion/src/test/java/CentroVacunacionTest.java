@@ -59,4 +59,36 @@ class CentroVacunacionTest {
         LocalDateTime fechaPrueba = LocalDateTime.of(2026, 6, 2, 12, 0); // 3 de Oct de 2023 fue Martes
         assertFalse(centro.estaAbierto(fechaPrueba), "El centro debería estar cerrado los Martes");
     }
+
+    // Crea un centro con un único funcionario que atiende los Lunes de 09:00 a 18:00
+    private CentroVacunacion centroConFuncionario(FuncSalud fs) {
+        ArrayList<FuncSalud> funcionarios = new ArrayList<>();
+        funcionarios.add(fs);
+        return new CentroVacunacion(new ArrayList<>(), funcionarios);
+    }
+
+    private FuncSalud funcionarioLunes() {
+        ArrayList<HorarioFs> horariosFs = new ArrayList<>();
+        horariosFs.add(new HorarioFs(DayOfWeek.MONDAY, LocalTime.of(9, 0), LocalTime.of(18, 0)));
+        return new FuncSalud(horariosFs);
+    }
+
+    @Test
+    void testBuscarFsParaCita_RetornaFuncionarioDisponible() {
+        FuncSalud fs = funcionarioLunes();
+        CentroVacunacion centroConFs = centroConFuncionario(fs);
+
+        // Lunes 2026-06-01 a las 10:00 -> el funcionario está disponible
+        FuncSalud encontrado = centroConFs.buscarFsParaCita(LocalDateTime.of(2026, 6, 1, 10, 0));
+        assertSame(fs, encontrado, "Debe retornar el funcionario con horario disponible");
+    }
+
+    @Test
+    void testBuscarFsParaCita_SinFuncionarioDisponible() {
+        CentroVacunacion centroConFs = centroConFuncionario(funcionarioLunes());
+
+        // Martes 2026-06-02 -> ningún funcionario atiende ese día
+        assertNull(centroConFs.buscarFsParaCita(LocalDateTime.of(2026, 6, 2, 10, 0)),
+                "No debe retornar funcionario si ninguno está disponible");
+    }
 }
