@@ -1,7 +1,20 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class FuncSalud extends Usuario{
-    public FuncSalud(String RUT, String nombres, String apellidos, Integer fono, String correoElectronico, LocalDate fechaNacimiento) {
-        super(RUT, nombres, apellidos, fono, correoElectronico, fechaNacimiento);
+    private ArrayList<HorarioFs> horarios = new ArrayList<>();
+
+    public FuncSalud(ArrayList<HorarioFs> horarios){
+        this.horarios = horarios;
+    }
+
+    public boolean disponible(LocalDateTime fechaHora){
+        for(HorarioFs h: horarios){
+            if(h.abarca(fechaHora) && h.estaDisponible()){
+                h.bloquear();
+                return true;
+            }
+        }
+        return false;
     }
 }

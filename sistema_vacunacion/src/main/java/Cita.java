@@ -2,16 +2,35 @@ import java.time.LocalDateTime;
 
 public class Cita {
     private LocalDateTime fecha_hora;
-    private Paciente paciente;
-    private FuncSalud funcSalud;
-    private Vacuna vacuna;
     private EstadoCita estado;
+    private Paciente paciente;
+    private FuncSalud funcionario;
+    private CentroVacunacion centro;
+    private Campania campania;
 
-    public Cita(LocalDateTime fecha_hora, Paciente paciente, FuncSalud funcSalud, Vacuna vacuna) {
-        this.fecha_hora = fecha_hora;
+    public Cita(Paciente paciente, FuncSalud funcionario, LocalDateTime fecha_hora,
+                CentroVacunacion centro, Campania campania) {
         this.paciente = paciente;
-        this.funcSalud = funcSalud;
-        this.vacuna = vacuna;
+        this.funcionario = funcionario;
+        this.fecha_hora = fecha_hora;
+        this.centro = centro;
+        this.campania = campania;
         this.estado = EstadoCita.VIGENTE;
+    }
+
+    public EstadoCita getEstado() {
+        return estado;
+    }
+
+    public FuncSalud getFuncionario() {
+        return funcionario;
+    }
+
+    public CentroVacunacion getCentro() {
+        return centro;
+    }
+
+    public Campania getCampania() {
+        return campania;
     }
 }

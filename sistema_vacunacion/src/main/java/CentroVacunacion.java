@@ -32,6 +32,14 @@ public class CentroVacunacion {
       return false;
     };
 
+    public FuncSalud buscarFsParaCita(LocalDateTime fechaHora){
+        for(FuncSalud fs: funcSalud){
+            if(fs.disponible(fechaHora)){
+                return fs;
+            }
+        }
+        return null;
+    }
     public Vacuna buscarVacuna(Campania camp){
             for(StockVacuna sv: stockVacunas){
                 if(sv.vacunaEsDeCampania(camp) && sv.verificarStock()){
