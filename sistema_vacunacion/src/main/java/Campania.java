@@ -9,6 +9,10 @@ public class Campania {
     private EstadoCampania estadoCampania;
     private PoblacionObjetivo pobObj;
 
+    public Campania(Integer idCampania) {
+        this.idCampania = idCampania;
+    }
+
     public Integer getIdCampania() {
         return idCampania;
     }

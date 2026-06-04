@@ -19,7 +19,8 @@ public class CentroVacunacion {
         this.horarios = horarios;
     }
 
-    public CentroVacunacion(ArrayList<HorarioCentro> horarios, ArrayList<FuncSalud> funcSalud) {
+    public CentroVacunacion(Integer id_centro, ArrayList<HorarioCentro> horarios, ArrayList<FuncSalud> funcSalud) {
+        this.id_centro = id_centro;
         this.horarios = horarios;
         this.funcSalud = funcSalud;
     }

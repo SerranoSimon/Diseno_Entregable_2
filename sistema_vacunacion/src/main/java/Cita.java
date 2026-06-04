@@ -17,4 +17,20 @@ public class Cita {
         this.campania = campania;
         this.estado = EstadoCita.VIGENTE;
     }
+
+    public EstadoCita getEstado() {
+        return estado;
+    }
+
+    public FuncSalud getFuncionario() {
+        return funcionario;
+    }
+
+    public CentroVacunacion getCentro() {
+        return centro;
+    }
+
+    public Campania getCampania() {
+        return campania;
+    }
 }

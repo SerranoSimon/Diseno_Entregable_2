@@ -64,7 +64,7 @@ class CentroVacunacionTest {
     private CentroVacunacion centroConFuncionario(FuncSalud fs) {
         ArrayList<FuncSalud> funcionarios = new ArrayList<>();
         funcionarios.add(fs);
-        return new CentroVacunacion(new ArrayList<>(), funcionarios);
+        return new CentroVacunacion(1, new ArrayList<>(), funcionarios);
     }
 
     private FuncSalud funcionarioLunes() {

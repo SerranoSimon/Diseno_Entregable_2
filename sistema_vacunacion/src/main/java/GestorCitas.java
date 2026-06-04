@@ -8,11 +8,25 @@ public class GestorCitas {
     private List<Campania> campanias = new ArrayList<>();
     private GestorNotificaciones gestorNotificaciones = new GestorNotificaciones();
 
+    public GestorCitas(List<CentroVacunacion> centros, List<Campania> campanias) {
+        this.centros = centros;
+        this.campanias = campanias;
+    }
+
     public Cita crearCita(Paciente paciente, LocalDateTime fecha_hora, int id_centro, int id_campania) {
         
         Campania camp = buscarCampania(id_campania);
         CentroVacunacion c = buscarCentro(id_centro);
+        if (c == null || camp == null) {
+            return null;
+        }
+        if (!c.estaAbierto(fecha_hora)) {
+            return null;
+        }
         FuncSalud fs = c.buscarFsParaCita(fecha_hora);
+        if (fs == null) {
+            return null;
+        }
         Cita cita = new Cita(paciente, fs, fecha_hora, c, camp);
         gestorNotificaciones.notificarCita(cita);
 
