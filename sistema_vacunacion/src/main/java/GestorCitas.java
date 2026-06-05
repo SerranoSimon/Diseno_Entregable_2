@@ -7,9 +7,11 @@ public class GestorCitas {
 
     private GestorNotificaciones gestorNotificaciones;
     private ValidadorCita validadorCita;
+    private ArrayList<Cita> citasCreadas;
     public GestorCitas(GestorNotificaciones gestorNotificaciones, ValidadorCita validadorCita) {
         this.gestorNotificaciones = gestorNotificaciones;
         this.validadorCita = validadorCita;
+        this.citasCreadas = new ArrayList<>();
     }
 
     public Cita crearCita(Paciente paciente, LocalDateTime fecha_hora, Integer id_centro, Integer id_campania) {
@@ -20,6 +22,7 @@ public class GestorCitas {
             Campania campania = validadorCita.getCampania();
             Cita cita = new Cita(paciente, fs, fecha_hora, centro, v,campania);
             gestorNotificaciones.notificarCita(cita);
+            citasCreadas.add(cita);
             return cita;
         } else{
             System.out.println("La cita no se puede llevar acabo");
