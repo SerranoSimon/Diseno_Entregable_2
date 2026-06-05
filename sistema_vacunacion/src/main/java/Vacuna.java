@@ -1,12 +1,11 @@
 public class Vacuna {
     private Integer id_vacuna;
     private String nombre;
-    private Campania campania;
 
-    public Vacuna(Integer id_vacuna, String nombre, Campania campania) {
+    public Vacuna(Integer id_vacuna, String nombre) {
         this.id_vacuna = id_vacuna;
         this.nombre = nombre;
-        this.campania = campania;
+
     }
 
     public int getId_vacuna() {
@@ -17,9 +16,5 @@ public class Vacuna {
         return nombre;
     }
 
-
-    public Campania getCampania() {
-        return campania;
-    }
 
 }

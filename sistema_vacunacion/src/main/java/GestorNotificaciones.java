@@ -1,24 +1,21 @@
 public class GestorNotificaciones {
 
     public void notificarCita(Cita cita) {
-        CanalNoti preferencia = cita.getPaciente().getPreferencia();
-        String mensaje=null;
-        //Creo que esto deberia ir en otra parte
-        switch (preferencia){
-            case SMS:
-                NotificacionFactory smsFactory = new SMSFactory();
-                mensaje = smsFactory.crearMensajePaciente(cita);
-
-                break;
-            case CORREOELECTRONICO:
-                NotificacionFactory correoFactory = new CorreoFactory();
-                mensaje = correoFactory.crearMensajePaciente(cita);
-
-                break;
-            case AMBOS:
-                NotificacionFactory smsFactory2 = new SMSFactory();
-                NotificacionFactory correoFactory2 = new CorreoFactory();
-                break;
-        }
+        notificarDestinatario(cita.getPaciente(), cita);
+        notificarDestinatario(cita.getFuncionario(), cita);
+    }
+    private void notificarDestinatario(Notificable destinatario, Cita cita) {
+        NotificacionPreferencia preferencia = destinatario.getNotificacionPreferencia();
+        NotificacionFactory factory = getFactory(preferencia);
+        String mensaje = destinatario.getMensajeCita(cita);
+        Notificacion notificacion = factory.crearNotificacion();
+        notificacion.enviarMensaje(mensaje);
+    }
+    private NotificacionFactory getFactory(NotificacionPreferencia pref) {
+        return switch (pref) {
+            case SMS -> new SMSFactory();
+            case CORREOELECTRONICO -> new CorreoFactory();
+            case AMBOS -> new NotificacionDobleFactory();
+        };
     }
 }

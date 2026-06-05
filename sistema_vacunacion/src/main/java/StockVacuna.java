@@ -2,11 +2,13 @@ public class StockVacuna {
     private Vacuna vacuna;
     private Integer cantidadDisponible;
     private Integer cantidadReservada;
+    private Campania campania;
 
-    public StockVacuna(Vacuna vacuna, Integer cantidad) {
+    public StockVacuna(Vacuna vacuna, Integer cantidad, Campania campania) {
         this.vacuna = vacuna;
         this.cantidadDisponible = cantidad;
         this.cantidadReservada = 0;
+        this.campania= campania;
     }
 
     public Vacuna getVacuna() {
@@ -19,7 +21,7 @@ public class StockVacuna {
 
 
     public boolean vacunaEsDeCampania(Campania camp){
-        if(vacuna.getCampania().equals(camp)) return true;
+        if(this.campania.equals(camp)) return true;
         else return false;
     }
     public boolean verificarStock(){

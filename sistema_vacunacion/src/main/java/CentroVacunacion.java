@@ -7,17 +7,19 @@ public class CentroVacunacion {
     private Integer id_centro;
     private String nombre;
     private String tipo;
+    private String direccion;
     private ArrayList<StockVacuna> stockVacunas;
-    private ArrayList<FuncSalud> funcSalud;
+    private ArrayList<FuncSalud> funcionariosSalud;
     private ArrayList<HorarioCentro> horarios;
 
-    public CentroVacunacion(Integer id_centro, String nombre, String tipo, ArrayList<StockVacuna> stockVacunas, ArrayList<FuncSalud> funcSalud, ArrayList<HorarioCentro> horarios) {
+    public CentroVacunacion(Integer id_centro, String nombre, String tipo, String direccion ) {
         this.id_centro = id_centro;
         this.nombre = nombre;
+        this.direccion = direccion;
         this.tipo = tipo;
-        this.stockVacunas = stockVacunas;
-        this.funcSalud = funcSalud;
-        this.horarios = horarios;
+        this.stockVacunas = new ArrayList<>();
+        this.funcionariosSalud = new ArrayList<>();
+        this.horarios = new ArrayList<>();
     }
 
     public boolean estaAbierto(LocalDateTime fechaHora){
@@ -33,7 +35,7 @@ public class CentroVacunacion {
     };
 
     public FuncSalud buscarFsParaCita(LocalDateTime fechaHora){
-        for(FuncSalud fs: funcSalud){
+        for(FuncSalud fs: funcionariosSalud){
             if(fs.disponible(fechaHora)){
                 return fs;
             }
@@ -51,5 +53,38 @@ public class CentroVacunacion {
 
     public Integer getId_centro() {
         return id_centro;
+    }
+    public void agregarHorario(HorarioCentro horarioCentro){
+        horarios.add(horarioCentro);
+    }
+    public void agregarFuncionariosSalud(FuncSalud funcSalud ){
+        funcionariosSalud.add(funcSalud);
+    }
+    public void agregarStockVacunas(StockVacuna stockVacuna){
+        stockVacunas.add(stockVacuna);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public ArrayList<StockVacuna> getStockVacunas() {
+        return stockVacunas;
+    }
+
+    public ArrayList<FuncSalud> getFuncionariosSalud() {
+        return funcionariosSalud;
+    }
+
+    public ArrayList<HorarioCentro> getHorarios() {
+        return horarios;
     }
 }

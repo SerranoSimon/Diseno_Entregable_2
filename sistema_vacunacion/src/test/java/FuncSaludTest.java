@@ -14,7 +14,7 @@ class FuncSaludTest {
         ArrayList<HorarioFs> horarios = new ArrayList<>();
         horarios.add(new HorarioFs(DayOfWeek.MONDAY, LocalTime.of(9, 0), LocalTime.of(13, 0)));
 
-        // CORRECCIÓN: Añadimos los datos personales requeridos por la clase Usuario
+
         return new FuncSalud(
                 "22.222.222-2",
                 "Ana",
@@ -22,7 +22,8 @@ class FuncSaludTest {
                 912345678,
                 "ana.gomez@cesfam.cl",
                 LocalDate.of(1985, 5, 20),
-                horarios
+                horarios,
+                null
         );
     }
 

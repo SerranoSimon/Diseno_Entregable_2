@@ -7,9 +7,9 @@ public class Usuario {
     private Integer fono;
     private String correoElectronico;
     private LocalDate fechaNacimiento;
-    private CanalNoti preferencia;
+    private NotificacionPreferencia preferencia;
 
-    public Usuario(String RUT, String nombres, String apellidos, Integer fono, String correoElectronico, LocalDate fechaNacimiento, CanalNoti preferencia) {
+    public Usuario(String RUT, String nombres, String apellidos, Integer fono, String correoElectronico, LocalDate fechaNacimiento, NotificacionPreferencia preferencia) {
         this.RUT = RUT;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -19,7 +19,7 @@ public class Usuario {
         this.preferencia = preferencia;
     }
 
-    public CanalNoti getPreferencia() {
+    public NotificacionPreferencia getPreferencia() {
         return preferencia;
     }
 

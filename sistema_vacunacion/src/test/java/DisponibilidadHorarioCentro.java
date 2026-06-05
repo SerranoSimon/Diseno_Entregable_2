@@ -78,7 +78,8 @@ class DisponibilidadHorarioCentro {
                 912345678,
                 "ana.gomez@cesfam.cl",
                 LocalDate.of(1985, 5, 20),
-                horariosFs
+                horariosFs,
+                null
         );
     }
 

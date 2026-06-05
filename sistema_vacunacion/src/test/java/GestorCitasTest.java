@@ -33,7 +33,7 @@ class GestorCitasTest {
         ArrayList<FuncSalud> funcionarios = new ArrayList<>();
         funcionarios.add(new FuncSalud(
                 "22.222.222-2", "Ana", "Gómez", 912345678, "ana@mail.com",
-                LocalDate.of(1985, 5, 20), horariosFs
+                LocalDate.of(1985, 5, 20), horariosFs, NotificacionPreferencia.CORREOELECTRONICO
         ));
         return funcionarios;
     }
@@ -47,32 +47,37 @@ class GestorCitasTest {
         if (campania != null) listaCampanias.add(campania);
         CampaniaRepo campaniaRepo = new CampaniaRepo(listaCampanias);
 
-        GestorNotificaciones notificacionesDummy = new GestorNotificaciones() {
-            @Override
-            public void notificarCita(Cita cita) { }
-        };
-
-        return new GestorCitas(campaniaRepo, centrosRepo, notificacionesDummy);
+        GestorNotificaciones notificacionesDummy = new GestorNotificaciones();
+        ValidadorCita validadorCita = new ValidadorCita(campaniaRepo,centrosRepo);
+        return new GestorCitas( notificacionesDummy, validadorCita);
     }
 
     private Paciente crearPacienteDummy() {
-        return new Paciente("11.111.111-1", "Juan", "Pérez", 987654321, "juan@mail.com", LocalDate.of(1990, 1, 1));
+        return new Paciente("11.111.111-1", "Juan", "Pérez", 987654321, "juan@mail.com", LocalDate.of(1990, 1, 1), NotificacionPreferencia.AMBOS);
     }
 
     private Campania crearCampaniaDummy(Integer id) {
-        return new Campania(
-                id, "Campaña de Prueba", LocalDate.of(2026, 1, 1), LocalDate.of(2026, 12, 31),
-                "Descripción test", null, null, new ArrayList<>()
-        );
+        ArrayList<StockVacuna> stockVacunas= new ArrayList<>();
+        stockVacunas.add(Vacuna);
+       Campania camp = new Campania(
+               id, "Campaña de Prueba", LocalDate.of(2026, 1, 1), LocalDate.of(2026, 12, 31),
+               "Descripción test", null, null
+       );
+       camp
     }
 
     // --- TESTS ---
 
     @Test
     void testCrearCita_CaminoFeliz() {
+
+        Campania camp= crearCampaniaDummy(10);
+
+        ArrayList<StockVacuna> stockVacunas_centro = new ArrayList<>();
+        stockVacunas_centro.add( new StockVacuna(new Vacuna(1, "vacuna test", camp), 10));
         CentroVacunacion centro = new CentroVacunacion(
                 1, "Cesfam Central", "Primario",
-                new ArrayList<>(), funcionarioLunes(), apertura(DayOfWeek.MONDAY)
+               stockVacunas_centro, funcionarioLunes(), apertura(DayOfWeek.MONDAY)
         );
         GestorCitas gestor = gestorCon(centro, crearCampaniaDummy(10));
 

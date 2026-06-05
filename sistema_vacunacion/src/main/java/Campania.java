@@ -11,7 +11,7 @@ public class Campania {
     private PoblacionObjetivo pobObj;
     private ArrayList<StockVacuna> stockVacunas;
 
-    public Campania(Integer idCampania, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String descripcion, EstadoCampania estadoCampania, PoblacionObjetivo pobObj, ArrayList<StockVacuna> stockVacunas) {
+    public Campania(Integer idCampania, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String descripcion, EstadoCampania estadoCampania, PoblacionObjetivo pobObj) {
         this.idCampania = idCampania;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
@@ -19,10 +19,17 @@ public class Campania {
         this.descripcion = descripcion;
         this.estadoCampania = estadoCampania;
         this.pobObj = pobObj;
-        this.stockVacunas = stockVacunas;
+        this.stockVacunas = new ArrayList<>();
     }
 
     public Integer getIdCampania() {
         return idCampania;
+    }
+    public void agregarStockVacunas(StockVacuna stockVacuna){
+        stockVacunas.add(stockVacuna);
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

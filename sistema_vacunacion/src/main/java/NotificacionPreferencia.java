@@ -1,4 +1,4 @@
-public enum CanalNoti {
+public enum NotificacionPreferencia {
     SMS,
     CORREOELECTRONICO,
     AMBOS,
