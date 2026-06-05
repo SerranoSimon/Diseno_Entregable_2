@@ -19,15 +19,16 @@ public class Usuario {
         this.preferencia = preferencia;
     }
 
+    public String getRUT() {
+        return RUT;
+    }
     public NotificacionPreferencia getPreferencia() {
         return preferencia;
     }
-
     public String getNombres() {
         return nombres;
     }
     public String getApellidos() {return apellidos;}
-
     public Integer getFono() {return fono;}
     public String getCorreoElectronico() {return correoElectronico;}
 

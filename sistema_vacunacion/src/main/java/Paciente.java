@@ -26,7 +26,7 @@ public class Paciente extends Usuario implements Notificable {
         String mensaje = "Estimado Paciente.\n" +
                 "Usted " +
                 cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos() +
-                " tiene una cita para vacunarse contra" + cita.getCampania().getNombre() +
+                " tiene una cita para vacunarse contra " + cita.getCampania().getNombre() +
                 ".\n Se le aplicará la vacuna "+ cita.getVacuna().getNombre() + " ,en el centro " + cita.getCentro().getNombre() +
                 ".\nUbicado en " + cita.getCentro().getDireccion() +
                 ".\nEl horario a asistir es " + cita.getFecha_hora() +
