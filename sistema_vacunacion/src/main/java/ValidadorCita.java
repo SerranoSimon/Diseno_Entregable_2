@@ -1,5 +1,5 @@
 import java.time.LocalDateTime;
-
+// Clase experto que valida una cita
 public class ValidadorCita {
     private FuncSalud funcSalud;
     private Vacuna vacuna;
@@ -33,7 +33,7 @@ public class ValidadorCita {
     }
 
     public boolean validarCita(LocalDateTime fecha_hora, Integer id_centro, Integer id_campania){
-
+        // Buscamos la campaña y el centro
         Campania camp = campaniaRepo.obtenerCampaniaPorId(id_campania);
         CentroVacunacion c = centrosRepo.obtenerCentroPorId(id_centro);
         if (c == null || camp == null) {
@@ -41,14 +41,17 @@ public class ValidadorCita {
         }
         campania = camp;
         centroVacunacion = c;
+        // Verificamos que el centro está abierto
         if (!c.estaAbierto(fecha_hora)) {
             return false;
         }
+        // Buscamos el funcionario que pueda atender
         FuncSalud fs = c.buscarFsParaCita(fecha_hora);
         if (fs == null) {
             return false;
         }
         funcSalud = fs;
+        // Buscamos la vacuna que pueda ser aplicada
         Vacuna v= c.buscarVacuna(camp);
         if(v == null){
             return  false;

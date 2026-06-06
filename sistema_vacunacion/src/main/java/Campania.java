@@ -29,7 +29,19 @@ public class Campania {
         stockVacunas.add(stockVacuna);
     }
 
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
     public String getNombre() {
         return nombre;
+    }
+
+    public EstadoCampania getEstadoCampania() {
+        return estadoCampania;
     }
 }

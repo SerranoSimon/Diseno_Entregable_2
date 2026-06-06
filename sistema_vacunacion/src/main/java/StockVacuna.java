@@ -19,15 +19,17 @@ public class StockVacuna {
         return cantidadDisponible;
     }
 
-
+    // Verifica que una vacuna sirva para cierta campaña
     public boolean vacunaEsDeCampania(Campania camp){
         if(this.campania.equals(camp)) return true;
         else return false;
     }
+    // Verifica que existan vacunas disponibles
     public boolean verificarStock(){
         if(cantidadDisponible>0) return true;
         else return false;
     }
+    // Reserva una vacuna
     public Vacuna reservar(){
         cantidadReservada++;
         cantidadDisponible--;

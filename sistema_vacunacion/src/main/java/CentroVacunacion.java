@@ -87,4 +87,6 @@ public class CentroVacunacion {
     public ArrayList<HorarioCentro> getHorarios() {
         return horarios;
     }
+
+
 }

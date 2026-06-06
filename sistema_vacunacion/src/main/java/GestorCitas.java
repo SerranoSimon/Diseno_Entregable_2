@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
+// Clase creadora de citas
 public class GestorCitas {
 
 
@@ -13,7 +13,7 @@ public class GestorCitas {
         this.validadorCita = validadorCita;
         this.citasCreadas = new ArrayList<>();
     }
-
+    // Crear cita usa al experto ValidarCita para ver si es posible crearla.
     public Cita crearCita(Paciente paciente, LocalDateTime fecha_hora, Integer id_centro, Integer id_campania) {
         if(validadorCita.validarCita(fecha_hora,id_centro,id_campania)){
             FuncSalud fs = validadorCita.getFuncSalud();

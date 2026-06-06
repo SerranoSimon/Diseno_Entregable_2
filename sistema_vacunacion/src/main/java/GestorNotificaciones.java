@@ -1,3 +1,5 @@
+
+// Clase experta en gestionar la forma en que se notifica.
 public class GestorNotificaciones {
 
     public void notificarCita(Cita cita) {
