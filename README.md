@@ -9,4 +9,4 @@
 
 ## Instrucciones
 - En el main se encuentra la ejecucion del proceso.
-- El video se encuentra al descomprimir demo.zip.
+- El video se encuentra en el siguiente link: https://youtu.be/YtgMA1pmGZc
