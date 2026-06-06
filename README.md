@@ -7,6 +7,6 @@
 - Leandro Wladimir Placencia Alvarez
 - Simón Pablo Serrano Luarte
 
-  ## Instrucciones
-  En el main se encuentra la ejecucion del proceso.
-  El video se encuentra al descomprimir demo.zip.
+## Instrucciones
+- En el main se encuentra la ejecucion del proceso.
+- El video se encuentra al descomprimir demo.zip.
